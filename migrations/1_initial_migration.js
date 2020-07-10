@@ -1,5 +1,5 @@
-const Migrations = artifacts.require("Migrations");
+const GeoDNS = artifacts.require("GeoDNS");
 
 module.exports = function(deployer) {
-  deployer.deploy(Migrations);
+  deployer.deploy(GeoDNS);
 };
