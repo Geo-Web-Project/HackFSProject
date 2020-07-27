@@ -1,0 +1,8 @@
+platform :ios, '13.0'
+use_frameworks!
+
+target 'covid-demo' do
+  pod 'IpfsLiteApi'
+  pod 'RealmSwift'
+  pod 'web3.swift', :git => 'https://github.com/codynhat/web3.swift.git', :branch => 'master'
+end

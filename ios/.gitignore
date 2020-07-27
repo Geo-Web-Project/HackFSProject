@@ -1,0 +1,182 @@
+#
+#  .gitignore for Xcode development for all Apple platforms OS X, iOS, TV, Watch
+#     by illumineX, inc.
+#     & Gary W. Longsine 
+#  Code:  https://github.com/illumineX/.gitignore-for-Xcode.git
+#  Blog:  http://blog.illuminex.com/2009/10/better-sample-gitignore-file-for-xcode.html
+#  License:  MIT license.  Use it freely, share your improvements if you like.
+#  Purpose:  To prevent kruft from being accidentally checked into the Git repository, emphasis on Apple platforms, Objective C and Swift
+#            
+
+# Mac OS X Finder and whatnot 
+.DS_Store
+.DS_Store?
+_Store
+._*
+.~*
+~$*
+*.lock
+.Spotlight-V100
+.Trash
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Sparkle distribution Private Key
+dsa_priv.pem
+
+# XCode (and ancestors) per-user config 
+xcuserdata/
+*.xccheckout
+*.xcuserstate
+*.xcscmblueprint
+*.xcplayground
+*.xcworkspace
+*.xcworkspacedata
+timeline.xctimeline
+*.moved-aside
+*.hmap
+*.ipa
+*.mode1
+!default.mode1
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspective
+!default.perspective
+*.perspectivev3
+!default.perspectivev3
+*.pbxuser
+!default.pbxuser
+
+# Swift 
+Packages/
+
+# Debug files
+*.dSYM/
+
+# Carthage
+Carthage/Checkouts
+
+# CocoaPods
+Pods/
+#Pods/Documentation
+#!Pods/Manifest.lock
+
+# Fastlane
+fastlane/report.xml
+fastlane/screenshots
+
+# Gems
+!Gemfile.lock
+
+#Gitkeep
+!.gitkeep
+
+# JetBrains
+.idea/workspace.xml
+.idea/tasks.xml
+
+# Qt
+*.pro.user
+*.autosave
+moc_*
+qrc_*
+ui_*
+
+# SwiftLint
+SwiftLint.pkg
+SwiftLintFramework.framework.zip
+benchmark_*
+
+#YARD (a documentation system)
+.yardoc
+
+# Generated files
+VersionX-revision.h
+version.xcconfig
+
+# Database and Log files
+*.log
+*.sql
+*.sqlite
+
+# Build Products 
+*.[oa]
+DerivedData/
+[Bb]uild/
+[Pp]re-[Bb]uild/
+[Dd]eliverables/
+[Dd]istribution/
+[Dd]ocumentation/
+
+# Other source repository archive directories 
+.hg
+.svn
+CVS
+*.prej
+*.mine
+
+# Packages 
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Backup Files
+*~
+*~.nib
+*.swp
+*.swo 
+*.lock
+profile
+*(Autosaved).rtfd/
+Backup[ ]of[ ]*.pages/
+Backup[ ]of[ ]*.key/
+Backup[ ]of[ ]*.numbers/
+
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+*.com
+*.class
+
