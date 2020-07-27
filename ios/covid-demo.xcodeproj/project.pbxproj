@@ -15,6 +15,7 @@
 		C32F1BBA24C249DD00FCE910 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C32F1BB924C249DD00FCE910 /* Preview Assets.xcassets */; };
 		C32F1BBD24C249DD00FCE910 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C32F1BBB24C249DD00FCE910 /* LaunchScreen.storyboard */; };
 		C32F1BC524C24B2400FCE910 /* DemoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32F1BC424C24B2400FCE910 /* DemoManager.swift */; };
+		C3ABEA3A24CF4CC400C7FEDB /* Geohash.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ABEA3924CF4CC400C7FEDB /* Geohash.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		C32F1BBE24C249DD00FCE910 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C32F1BC424C24B2400FCE910 /* DemoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoManager.swift; sourceTree = "<group>"; };
 		C39992E724C273AD00877128 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		C3ABEA3924CF4CC400C7FEDB /* Geohash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geohash.swift; sourceTree = "<group>"; };
 		CBF440B55185D4A21E7C0711 /* Pods_covid_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_covid_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3670E4F69203480F398CF4C /* Pods-covid-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-covid-demo.release.xcconfig"; path = "Target Support Files/Pods-covid-demo/Pods-covid-demo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +82,7 @@
 				C32F1BB224C249D700FCE910 /* SceneDelegate.swift */,
 				C32F1BB424C249D700FCE910 /* ContentView.swift */,
 				C32F1BC424C24B2400FCE910 /* DemoManager.swift */,
+				C3ABEA3924CF4CC400C7FEDB /* Geohash.swift */,
 				C32F1BB624C249DD00FCE910 /* Assets.xcassets */,
 				C32F1BBB24C249DD00FCE910 /* LaunchScreen.storyboard */,
 				C32F1BBE24C249DD00FCE910 /* Info.plist */,
@@ -221,6 +224,7 @@
 			files = (
 				C32F1BC524C24B2400FCE910 /* DemoManager.swift in Sources */,
 				C32F1BB124C249D700FCE910 /* AppDelegate.swift in Sources */,
+				C3ABEA3A24CF4CC400C7FEDB /* Geohash.swift in Sources */,
 				C32F1BB324C249D700FCE910 /* SceneDelegate.swift in Sources */,
 				C32F1BB524C249D700FCE910 /* ContentView.swift in Sources */,
 			);

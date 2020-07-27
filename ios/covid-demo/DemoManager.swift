@@ -12,6 +12,9 @@ import UserNotifications
 import IpfsLiteApi
 
 class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject {
+	static let BLE_DEMO_ID = UUID(uuidString: "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0")!
+	static let DEMO_GEOHASH = Geohash("u4pruydqqvj")!
+	
 	let locationManager: CLLocationManager
 	let notificationCenter: UNUserNotificationCenter
 	
@@ -30,7 +33,7 @@ class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject {
 	}
 	
 	func registerDemoBeacon() {
-		let beaconRegion = CLBeaconRegion(uuid: UUID(uuidString: "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0")!, identifier: "DemoBeacon")
+		let beaconRegion = CLBeaconRegion(uuid: DemoManager.BLE_DEMO_ID, identifier: "DemoBeacon")
 		
 		locationManager.startMonitoring(for: beaconRegion)
 	}
@@ -68,28 +71,23 @@ class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject {
 	
 	func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
 		print("Did enter region: \(region)")
-		self.locationManager.requestLocation()
-	}
-	
-	func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-		print("Did exit region: \(region)")
-	}
-	
-	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-		guard let location = locations.first else {
-			return
-		}
-		
-		IpfsLiteApi.instance().getNodeForCid("QmY9cxiHqTFoWamkQVkpmmqzBrY3hCBEL2XNu3NtX74Fuu") { (node, error) in
+//		self.locationManager.requestLocation()
+
+		IpfsLiteApi.instance().getNodeForCid("QmXEJHJXHio34DV9gzB8tV2JeqnSTvixjXh7SEJnr2Q9MG") { (node, error) in
 			if error != nil {
-				print("ERROR: \(error?.localizedDescription)")
+				print("ERROR: \(error!.localizedDescription)")
 				return
 			}
-			let data = String(data: node!.block.rawData, encoding: .utf8)!
+			
+			// API seems to return a raw protobuf block. Fetching a block that is not protobuf causes an error
+			let jsonString = String(data: node!.block.rawData, encoding: .ascii)!.dropFirst(8).dropLast(3)
+			
+			let decoder = JSONDecoder()
+			let demoContent = try! decoder.decode(DemoModel.self, from: jsonString.data(using: .utf8)!)
 			
 			let content = UNMutableNotificationContent()
-			content.title = "Did Enter Region"
-			content.body = data.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+			content.title = "Welcome to \(demoContent.name)"
+			content.body = demoContent.covidPolicy.summary
 
 			let uuidString = UUID().uuidString
 			let request = UNNotificationRequest(identifier: uuidString,
@@ -101,5 +99,37 @@ class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject {
 			   }
 			}
 		}
+	}
+	
+	func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+		print("Did exit region: \(region)")
+	}
+	
+//	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//		guard let location = locations.first else {
+//			return
+//		}
+//
+//
+//	}
+}
+
+struct DemoModel: Codable {
+	let name: String
+	let covidPolicy: CovidPolicy
+	
+	enum CodingKeys : String, CodingKey {
+		case name
+		case covidPolicy = "covid-policy"
+	}
+}
+
+struct CovidPolicy: Codable {
+	let summary: String
+	let masksRequired: Bool
+	
+	enum CodingKeys : String, CodingKey {
+		case summary
+		case masksRequired = "masks-required"
 	}
 }

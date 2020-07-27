@@ -1,0 +1,7 @@
+{
+  "name": "Grand Central Bakery",
+  "covid-policy": {
+    "summary": "Masks are required at all times. Takeout only.",
+    "masks-required": true
+  }
+}
