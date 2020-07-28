@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -32,6 +32,7 @@
 		C3B4528724D0DA2600C2D49D /* RegistryFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B4528624D0DA2600C2D49D /* RegistryFunctions.swift */; };
 		C3B4528924D0DAC900C2D49D /* RegistryResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B4528824D0DAC900C2D49D /* RegistryResponses.swift */; };
 		C3B4528B24D0DB0C00C2D49D /* Registry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B4528A24D0DB0C00C2D49D /* Registry.swift */; };
+		C3B4528E24D0DF8000C2D49D /* Geohash in Frameworks */ = {isa = PBXBuildFile; productRef = C3B4528D24D0DF8000C2D49D /* Geohash */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3B4528E24D0DF8000C2D49D /* Geohash in Frameworks */,
 				886E77B2A944CDABC339F5E6 /* Pods_covid_demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,6 +265,9 @@
 				C3ABEA5D24CF7FC100C7FEDB /* PBXTargetDependency */,
 			);
 			name = "covid-demo";
+			packageProductDependencies = (
+				C3B4528D24D0DF8000C2D49D /* Geohash */,
+			);
 			productName = "covid-demo";
 			productReference = C32F1BAD24C249D700FCE910 /* covid-demo.app */;
 			productType = "com.apple.product-type.application";
@@ -332,6 +337,9 @@
 				Base,
 			);
 			mainGroup = C32F1BA424C249D700FCE910;
+			packageReferences = (
+				C3B4528C24D0DF8000C2D49D /* XCRemoteSwiftPackageReference "Geohash" */,
+			);
 			productRefGroup = C32F1BAE24C249D700FCE910 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -785,6 +793,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C3B4528C24D0DF8000C2D49D /* XCRemoteSwiftPackageReference "Geohash" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:nh7a/Geohash.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C3B4528D24D0DF8000C2D49D /* Geohash */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B4528C24D0DF8000C2D49D /* XCRemoteSwiftPackageReference "Geohash" */;
+			productName = Geohash;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C32F1BA524C249D700FCE910 /* Project object */;
 }

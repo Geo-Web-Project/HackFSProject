@@ -8,6 +8,7 @@
 
 import Foundation
 import web3
+import Geohash
 
 class Registry {
 	let client: EthereumClient
@@ -16,8 +17,8 @@ class Registry {
 		self.client = client
 	}
 	
-	func contentIdentifier(tokenContract: EthereumAddress, geohash: Geohash, completion: @escaping((Error?, String?) -> Void)) {
-		let function = RegistryFunctions.contentIdentifier(contract: tokenContract, _geohash: geohash.value)
+	func contentIdentifier(tokenContract: EthereumAddress, geohash: String, completion: @escaping((Error?, String?) -> Void)) {
+		let function = RegistryFunctions.contentIdentifier(contract: tokenContract, _geohash: Geohash.bigIntValue(geohash: geohash)!)
 		function.call(withClient: self.client, responseType: RegistryResponses.contentIdentifierResponse.self) { (error, response) in
 			return completion(error, response?.value)
 		}

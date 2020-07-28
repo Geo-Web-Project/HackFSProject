@@ -8,20 +8,19 @@
 
 import Foundation
 import BigInt
+import Geohash
 
-struct Geohash {
-	private static let charmap = Array("0123456789bcdefghjkmnpqrstuvwxyz")
-	
-	let value: BigUInt
-	
-	init?(_ str: String) {
+extension Geohash {
+	static func bigIntValue(geohash: String) -> BigUInt? {
+		let charmap = Array("0123456789bcdefghjkmnpqrstuvwxyz")
+		
 		var _value = BigUInt(0)
-		for (i, char) in str.reversed().enumerated() {
-			guard let v = Geohash.charmap.firstIndex(of: char) else { return nil }
+		for (i, char) in geohash.reversed().enumerated() {
+			guard let v = charmap.firstIndex(of: char) else { return nil }
 			
 			_value += BigUInt(v) * BigUInt(32).power(i)
 		}
 		
-		self.value = _value
+		return _value
 	}
 }

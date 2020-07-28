@@ -11,11 +11,12 @@ import CoreLocation
 import UserNotifications
 import WatchConnectivity
 import web3
+import Geohash
 
 class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject, WCSessionDelegate {
 	static let INFURA_TOKEN = "44ba7c8772d247b49c57fbc640425f74"
 	static let registryAddress = EthereumAddress("0x46E57Bab9298612E0A49DF4048AE20fC2811C4b8")
-	static let DEMO_GEOHASH = Geohash("c20g0vzc")!
+	static let DEMO_GEOHASH = "c20g0vzfp"
 	
 	let web3Client: EthereumClient
 	let registry: Registry
@@ -61,7 +62,7 @@ class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject, WCSess
 		super.init()
 		locationManager.delegate = self
 		wcSession?.delegate = self
-		
+				
 		self.wcSession?.activate()
 		
 		self.notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
@@ -101,19 +102,30 @@ class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject, WCSess
 	
 	func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
 		print("Did enter region: \(region)")
-//		self.locationManager.requestLocation()
-		
-		self.state = .searchingForContent
-		
-		self.registry.contentIdentifier(tokenContract: DemoManager.registryAddress, geohash: Geohash("u4pruydqqvj")!) { (error, cid) in
+		self.locationManager.requestLocation()
+	}
+	
+	func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+		print("Did exit region: \(region)")
+		self.currentRegion = nil
+	}
+	
+	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+		guard let location = locations.first else {
+			return
+		}
+						
+		self.registry.contentIdentifier(tokenContract: DemoManager.registryAddress, geohash: location.coordinate.geohash(length: 9)) { (error, cid) in
 			if error != nil {
 				print("ERROR: \(error!.localizedDescription)")
 				return
 			}
 			DispatchQueue.main.async {
 				self.cid = cid
+				self.state = .searchingForContent
 			}
-			guard let cid = cid else { return }
+			guard let cid = cid, cid.count > 0 else { return }
+			
 			
 			URLSession.shared.dataTask(with: URL(string: "https://ipfs.io/ipfs/\(cid)")!) { (data, response, error) in
 				if error != nil {
@@ -143,20 +155,8 @@ class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject, WCSess
 				}
 			}.resume()
 		}
+
 	}
-	
-	func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-		print("Did exit region: \(region)")
-		self.currentRegion = nil
-	}
-	
-//	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//		guard let location = locations.first else {
-//			return
-//		}
-//
-//
-//	}
 	
 	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
 		
