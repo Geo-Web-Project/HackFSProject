@@ -17,6 +17,12 @@ struct ContentView: View {
 				Text("No data found for current location")
 			} else if manager.state == .searchingForContent {
 				Text("Searching for content...")
+				if manager.cid != nil {
+					Text("CID: \(manager.cid!)")
+						.font(.system(size: 16.0))
+						.fontWeight(.bold)
+						.padding()
+				}
 			} else {
 				Spacer()
 				Text("Welcome to \(manager.currentRegion!.name)")
@@ -27,6 +33,12 @@ struct ContentView: View {
 				Text("Masks required: \(String(manager.currentRegion!.covidPolicy.masksRequired))")
 					.font(.system(size: 16.0))
 					.fontWeight(.bold)
+				if manager.cid != nil {
+					Text("CID: \(manager.cid!)")
+						.font(.system(size: 16.0))
+						.fontWeight(.bold)
+						.padding()
+				}
 				Spacer()
 			}
 		}

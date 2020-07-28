@@ -10,15 +10,22 @@ import Foundation
 import CoreLocation
 import UserNotifications
 import WatchConnectivity
+import web3
 
 class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject, WCSessionDelegate {
+	static let INFURA_TOKEN = "44ba7c8772d247b49c57fbc640425f74"
+	static let registryAddress = EthereumAddress("0x46E57Bab9298612E0A49DF4048AE20fC2811C4b8")
 	static let DEMO_GEOHASH = Geohash("c20g0vzc")!
+	
+	let web3Client: EthereumClient
+	let registry: Registry
 	
 	let locationManager: CLLocationManager
 	let notificationCenter: UNUserNotificationCenter
 	let wcSession: WCSession?
 	
 	@Published var state: DemoState = .noContent
+	@Published var cid: String? = nil
 	@Published var currentRegion: DemoModel? {
 		didSet {
 			if currentRegion == nil {
@@ -47,14 +54,16 @@ class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject, WCSess
 			self.wcSession = nil
 		}
 		
+		let clientUrl = URL(string: "https://rinkeby.infura.io/v3/\(DemoManager.INFURA_TOKEN)")!
+		self.web3Client = EthereumClient(url: clientUrl)
+		self.registry = Registry(client: self.web3Client)
+		
 		super.init()
 		locationManager.delegate = self
 		wcSession?.delegate = self
 		
 		self.wcSession?.activate()
 		
-		print(DemoManager.DEMO_GEOHASH.value)
-
 		self.notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
 			self.locationManager.requestAlwaysAuthorization()
 		}
@@ -96,33 +105,44 @@ class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject, WCSess
 		
 		self.state = .searchingForContent
 		
-		URLSession.shared.dataTask(with: URL(string: "https://ipfs.io/ipfs/QmfDvJddbfdrotWXZmGYPWg5Le629L5mjZLeznz4jPqqTm")!) { (data, response, error) in
+		self.registry.contentIdentifier(tokenContract: DemoManager.registryAddress, geohash: Geohash("u4pruydqqvj")!) { (error, cid) in
 			if error != nil {
 				print("ERROR: \(error!.localizedDescription)")
 				return
 			}
-			
-			let decoder = JSONDecoder()
-			let demoContent = try! decoder.decode(DemoModel.self, from: data!)
-			
 			DispatchQueue.main.async {
-				self.currentRegion = demoContent
+				self.cid = cid
 			}
+			guard let cid = cid else { return }
 			
-			let content = UNMutableNotificationContent()
-			content.title = "Welcome to \(demoContent.name)"
-			content.body = demoContent.covidPolicy.summary
+			URLSession.shared.dataTask(with: URL(string: "https://ipfs.io/ipfs/\(cid)")!) { (data, response, error) in
+				if error != nil {
+					print("ERROR: \(error!.localizedDescription)")
+					return
+				}
+				
+				let decoder = JSONDecoder()
+				let demoContent = try! decoder.decode(DemoModel.self, from: data!)
+				
+				DispatchQueue.main.async {
+					self.currentRegion = demoContent
+				}
+				
+				let content = UNMutableNotificationContent()
+				content.title = "Welcome to \(demoContent.name)"
+				content.body = demoContent.covidPolicy.summary
 
-			let uuidString = UUID().uuidString
-			let request = UNNotificationRequest(identifier: uuidString,
-						content: content, trigger: nil)
+				let uuidString = UUID().uuidString
+				let request = UNNotificationRequest(identifier: uuidString,
+							content: content, trigger: nil)
 
-			self.notificationCenter.add(request) { (error) in
-			   if error != nil {
+				self.notificationCenter.add(request) { (error) in
+				   if error != nil {
 
-			   }
-			}
-		}.resume()
+				   }
+				}
+			}.resume()
+		}
 	}
 	
 	func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
