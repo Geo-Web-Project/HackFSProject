@@ -5,7 +5,7 @@ contract Registry {
     
     struct LandParcel {
         address owner;
-        bytes32 cid;
+        string cid;
     }
     
     constructor() public {
@@ -19,7 +19,7 @@ contract Registry {
     
     mapping(uint256 => LandParcel) landParcels;     // GeoHash -> LandParcel
     
-    function claim(uint256 _geohash, address _owner, bytes32 _cid) onlyAdmin external {
+    function claim(uint256 _geohash, address _owner, string calldata _cid) onlyAdmin external {
         require(landParcels[_geohash].owner == address(0), "Err: Land already Claimed");
         landParcels[_geohash] = LandParcel(_owner, _cid);
     }
@@ -28,7 +28,7 @@ contract Registry {
         _owner = landParcels[_geohash].owner;
     }
     
-    function contentIdentifier(uint256 _geohash) external view returns (bytes32  _content) {
+    function contentIdentifier(uint256 _geohash) external view returns (string memory  _content) {
         return landParcels[_geohash].cid;
     }
     
