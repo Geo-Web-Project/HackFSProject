@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D184A09EB0C5132CC8E6550 /* Pods_covid_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF440B55185D4A21E7C0711 /* Pods_covid_demo.framework */; };
+		6611515BB10863644FDE3164 /* Pods_watch_demo_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995F3E7D6C615EE6C20F56C7 /* Pods_watch_demo_Extension.framework */; };
+		886E77B2A944CDABC339F5E6 /* Pods_covid_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8F8AD931E5D58BA978BBE3 /* Pods_covid_demo.framework */; };
+		C31DD06224CFA49F00285199 /* Geohash.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ABEA3924CF4CC400C7FEDB /* Geohash.swift */; };
 		C32F1BB124C249D700FCE910 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32F1BB024C249D700FCE910 /* AppDelegate.swift */; };
 		C32F1BB324C249D700FCE910 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32F1BB224C249D700FCE910 /* SceneDelegate.swift */; };
 		C32F1BB524C249D700FCE910 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32F1BB424C249D700FCE910 /* ContentView.swift */; };
@@ -15,11 +17,71 @@
 		C32F1BBA24C249DD00FCE910 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C32F1BB924C249DD00FCE910 /* Preview Assets.xcassets */; };
 		C32F1BBD24C249DD00FCE910 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C32F1BBB24C249DD00FCE910 /* LaunchScreen.storyboard */; };
 		C32F1BC524C24B2400FCE910 /* DemoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32F1BC424C24B2400FCE910 /* DemoManager.swift */; };
+		C3A401DA24D0BD6200696F51 /* DemoStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A401D924D0BD6200696F51 /* DemoStateManager.swift */; };
+		C3A401DC24D0BDD200696F51 /* DemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A401DB24D0BDD200696F51 /* DemoModel.swift */; };
+		C3A401DD24D0BDD200696F51 /* DemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A401DB24D0BDD200696F51 /* DemoModel.swift */; };
 		C3ABEA3A24CF4CC400C7FEDB /* Geohash.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ABEA3924CF4CC400C7FEDB /* Geohash.swift */; };
+		C3ABEA4124CF7FB900C7FEDB /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3ABEA3F24CF7FB900C7FEDB /* Interface.storyboard */; };
+		C3ABEA4324CF7FBF00C7FEDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3ABEA4224CF7FBF00C7FEDB /* Assets.xcassets */; };
+		C3ABEA4A24CF7FBF00C7FEDB /* watch-demo Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C3ABEA4924CF7FBF00C7FEDB /* watch-demo Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C3ABEA4F24CF7FBF00C7FEDB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ABEA4E24CF7FBF00C7FEDB /* ContentView.swift */; };
+		C3ABEA5124CF7FBF00C7FEDB /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ABEA5024CF7FBF00C7FEDB /* HostingController.swift */; };
+		C3ABEA5324CF7FBF00C7FEDB /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ABEA5224CF7FBF00C7FEDB /* ExtensionDelegate.swift */; };
+		C3ABEA5524CF7FBF00C7FEDB /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ABEA5424CF7FBF00C7FEDB /* ComplicationController.swift */; };
+		C3ABEA5724CF7FC100C7FEDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3ABEA5624CF7FC100C7FEDB /* Assets.xcassets */; };
+		C3ABEA5A24CF7FC100C7FEDB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3ABEA5924CF7FC100C7FEDB /* Preview Assets.xcassets */; };
+		C3ABEA5E24CF7FC100C7FEDB /* watch-demo.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = C3ABEA3D24CF7FB900C7FEDB /* watch-demo.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C3ABEA4B24CF7FBF00C7FEDB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C32F1BA524C249D700FCE910 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C3ABEA4824CF7FBF00C7FEDB;
+			remoteInfo = "watch-demo Extension";
+		};
+		C3ABEA5C24CF7FC100C7FEDB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C32F1BA524C249D700FCE910 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C3ABEA3C24CF7FB900C7FEDB;
+			remoteInfo = "watch-demo";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C3ABEA6224CF7FC100C7FEDB /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C3ABEA4A24CF7FBF00C7FEDB /* watch-demo Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3ABEA6624CF7FC100C7FEDB /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				C3ABEA5E24CF7FC100C7FEDB /* watch-demo.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		BF294A6CFBF1B9C5C870C591 /* Pods-covid-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-covid-demo.debug.xcconfig"; path = "Target Support Files/Pods-covid-demo/Pods-covid-demo.debug.xcconfig"; sourceTree = "<group>"; };
+		2056EF122D0112133A6A7C34 /* Pods-watch-demo Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watch-demo Extension.debug.xcconfig"; path = "Target Support Files/Pods-watch-demo Extension/Pods-watch-demo Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		43E10743EADA9109B7BB28E5 /* Pods-watch-demo Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watch-demo Extension.release.xcconfig"; path = "Target Support Files/Pods-watch-demo Extension/Pods-watch-demo Extension.release.xcconfig"; sourceTree = "<group>"; };
+		5A8F8AD931E5D58BA978BBE3 /* Pods_covid_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_covid_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CB7125A5D8E6B7658EAF32F /* Pods-covid-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-covid-demo.release.xcconfig"; path = "Target Support Files/Pods-covid-demo/Pods-covid-demo.release.xcconfig"; sourceTree = "<group>"; };
+		91BD1557D6960483575D736F /* Pods-covid-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-covid-demo.debug.xcconfig"; path = "Target Support Files/Pods-covid-demo/Pods-covid-demo.debug.xcconfig"; sourceTree = "<group>"; };
+		995F3E7D6C615EE6C20F56C7 /* Pods_watch_demo_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watch_demo_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C32F1BAD24C249D700FCE910 /* covid-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "covid-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C32F1BB024C249D700FCE910 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C32F1BB224C249D700FCE910 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,29 +91,57 @@
 		C32F1BBC24C249DD00FCE910 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C32F1BBE24C249DD00FCE910 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C32F1BC424C24B2400FCE910 /* DemoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoManager.swift; sourceTree = "<group>"; };
-		C39992E724C273AD00877128 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		C3A401D924D0BD6200696F51 /* DemoStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoStateManager.swift; sourceTree = "<group>"; };
+		C3A401DB24D0BDD200696F51 /* DemoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoModel.swift; sourceTree = "<group>"; };
 		C3ABEA3924CF4CC400C7FEDB /* Geohash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geohash.swift; sourceTree = "<group>"; };
-		CBF440B55185D4A21E7C0711 /* Pods_covid_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_covid_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3670E4F69203480F398CF4C /* Pods-covid-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-covid-demo.release.xcconfig"; path = "Target Support Files/Pods-covid-demo/Pods-covid-demo.release.xcconfig"; sourceTree = "<group>"; };
+		C3ABEA3D24CF7FB900C7FEDB /* watch-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "watch-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3ABEA4024CF7FB900C7FEDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		C3ABEA4224CF7FBF00C7FEDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C3ABEA4424CF7FBF00C7FEDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3ABEA4924CF7FBF00C7FEDB /* watch-demo Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "watch-demo Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3ABEA4E24CF7FBF00C7FEDB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C3ABEA5024CF7FBF00C7FEDB /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
+		C3ABEA5224CF7FBF00C7FEDB /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		C3ABEA5424CF7FBF00C7FEDB /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		C3ABEA5624CF7FC100C7FEDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C3ABEA5924CF7FC100C7FEDB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C3ABEA5B24CF7FC100C7FEDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		451CF119CA28D2F9E065A675 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C32F1BAA24C249D700FCE910 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D184A09EB0C5132CC8E6550 /* Pods_covid_demo.framework in Frameworks */,
+				886E77B2A944CDABC339F5E6 /* Pods_covid_demo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3ABEA4624CF7FBF00C7FEDB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6611515BB10863644FDE3164 /* Pods_watch_demo_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		784EA0DF9568B495F7DAE004 /* Pods */ = {
+		BDB2B4E05A0F2314669A71B0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BF294A6CFBF1B9C5C870C591 /* Pods-covid-demo.debug.xcconfig */,
-				F3670E4F69203480F398CF4C /* Pods-covid-demo.release.xcconfig */,
+				91BD1557D6960483575D736F /* Pods-covid-demo.debug.xcconfig */,
+				5CB7125A5D8E6B7658EAF32F /* Pods-covid-demo.release.xcconfig */,
+				2056EF122D0112133A6A7C34 /* Pods-watch-demo Extension.debug.xcconfig */,
+				43E10743EADA9109B7BB28E5 /* Pods-watch-demo Extension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -59,11 +149,12 @@
 		C32F1BA424C249D700FCE910 = {
 			isa = PBXGroup;
 			children = (
-				C39992E724C273AD00877128 /* Bridging-Header.h */,
 				C32F1BAF24C249D700FCE910 /* covid-demo */,
+				C3ABEA3E24CF7FB900C7FEDB /* watch-demo */,
+				C3ABEA4D24CF7FBF00C7FEDB /* watch-demo Extension */,
 				C32F1BAE24C249D700FCE910 /* Products */,
-				784EA0DF9568B495F7DAE004 /* Pods */,
-				DF9EEB58C426AC2554E04FAB /* Frameworks */,
+				BDB2B4E05A0F2314669A71B0 /* Pods */,
+				FD1757CFD78ED34DF38BEF97 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				C32F1BAD24C249D700FCE910 /* covid-demo.app */,
+				C3ABEA3D24CF7FB900C7FEDB /* watch-demo.app */,
+				C3ABEA4924CF7FBF00C7FEDB /* watch-demo Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,6 +176,7 @@
 				C32F1BB424C249D700FCE910 /* ContentView.swift */,
 				C32F1BC424C24B2400FCE910 /* DemoManager.swift */,
 				C3ABEA3924CF4CC400C7FEDB /* Geohash.swift */,
+				C3A401DB24D0BDD200696F51 /* DemoModel.swift */,
 				C32F1BB624C249DD00FCE910 /* Assets.xcassets */,
 				C32F1BBB24C249DD00FCE910 /* LaunchScreen.storyboard */,
 				C32F1BBE24C249DD00FCE910 /* Info.plist */,
@@ -99,10 +193,44 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		DF9EEB58C426AC2554E04FAB /* Frameworks */ = {
+		C3ABEA3E24CF7FB900C7FEDB /* watch-demo */ = {
 			isa = PBXGroup;
 			children = (
-				CBF440B55185D4A21E7C0711 /* Pods_covid_demo.framework */,
+				C3ABEA3F24CF7FB900C7FEDB /* Interface.storyboard */,
+				C3ABEA4224CF7FBF00C7FEDB /* Assets.xcassets */,
+				C3ABEA4424CF7FBF00C7FEDB /* Info.plist */,
+			);
+			path = "watch-demo";
+			sourceTree = "<group>";
+		};
+		C3ABEA4D24CF7FBF00C7FEDB /* watch-demo Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C3ABEA4E24CF7FBF00C7FEDB /* ContentView.swift */,
+				C3ABEA5024CF7FBF00C7FEDB /* HostingController.swift */,
+				C3ABEA5224CF7FBF00C7FEDB /* ExtensionDelegate.swift */,
+				C3ABEA5424CF7FBF00C7FEDB /* ComplicationController.swift */,
+				C3A401D924D0BD6200696F51 /* DemoStateManager.swift */,
+				C3ABEA5624CF7FC100C7FEDB /* Assets.xcassets */,
+				C3ABEA5B24CF7FC100C7FEDB /* Info.plist */,
+				C3ABEA5824CF7FC100C7FEDB /* Preview Content */,
+			);
+			path = "watch-demo Extension";
+			sourceTree = "<group>";
+		};
+		C3ABEA5824CF7FC100C7FEDB /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C3ABEA5924CF7FC100C7FEDB /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FD1757CFD78ED34DF38BEF97 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5A8F8AD931E5D58BA978BBE3 /* Pods_covid_demo.framework */,
+				995F3E7D6C615EE6C20F56C7 /* Pods_watch_demo_Extension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -114,20 +242,59 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C32F1BC124C249DD00FCE910 /* Build configuration list for PBXNativeTarget "covid-demo" */;
 			buildPhases = (
-				7ABF03092CBC834055FE09D0 /* [CP] Check Pods Manifest.lock */,
+				AF90DDD87A3617ACEC835C9B /* [CP] Check Pods Manifest.lock */,
 				C32F1BA924C249D700FCE910 /* Sources */,
 				C32F1BAA24C249D700FCE910 /* Frameworks */,
 				C32F1BAB24C249D700FCE910 /* Resources */,
-				5A456A82DE639C2CCAA3BA93 /* [CP] Embed Pods Frameworks */,
+				C3ABEA6624CF7FC100C7FEDB /* Embed Watch Content */,
+				2915B0693817D645584F7344 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C3ABEA5D24CF7FC100C7FEDB /* PBXTargetDependency */,
 			);
 			name = "covid-demo";
 			productName = "covid-demo";
 			productReference = C32F1BAD24C249D700FCE910 /* covid-demo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		C3ABEA3C24CF7FB900C7FEDB /* watch-demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3ABEA6324CF7FC100C7FEDB /* Build configuration list for PBXNativeTarget "watch-demo" */;
+			buildPhases = (
+				C3ABEA3B24CF7FB900C7FEDB /* Resources */,
+				C3ABEA6224CF7FC100C7FEDB /* Embed App Extensions */,
+				451CF119CA28D2F9E065A675 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C3ABEA4C24CF7FBF00C7FEDB /* PBXTargetDependency */,
+			);
+			name = "watch-demo";
+			productName = "watch-demo";
+			productReference = C3ABEA3D24CF7FB900C7FEDB /* watch-demo.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		C3ABEA4824CF7FBF00C7FEDB /* watch-demo Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3ABEA5F24CF7FC100C7FEDB /* Build configuration list for PBXNativeTarget "watch-demo Extension" */;
+			buildPhases = (
+				75B5D4722B3BB9A8D2D5E3A9 /* [CP] Check Pods Manifest.lock */,
+				C3ABEA4524CF7FBF00C7FEDB /* Sources */,
+				C3ABEA4624CF7FBF00C7FEDB /* Frameworks */,
+				C3ABEA4724CF7FBF00C7FEDB /* Resources */,
+				1C6B530294CC0F1EA701484A /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "watch-demo Extension";
+			productName = "watch-demo Extension";
+			productReference = C3ABEA4924CF7FBF00C7FEDB /* watch-demo Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -137,9 +304,15 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1150;
-				ORGANIZATIONNAME = "Geo Web Projecy";
+				ORGANIZATIONNAME = "Geo Web Project";
 				TargetAttributes = {
 					C32F1BAC24C249D700FCE910 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					C3ABEA3C24CF7FB900C7FEDB = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					C3ABEA4824CF7FBF00C7FEDB = {
 						CreatedOnToolsVersion = 11.5;
 					};
 				};
@@ -158,6 +331,8 @@
 			projectRoot = "";
 			targets = (
 				C32F1BAC24C249D700FCE910 /* covid-demo */,
+				C3ABEA3C24CF7FB900C7FEDB /* watch-demo */,
+				C3ABEA4824CF7FBF00C7FEDB /* watch-demo Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -173,10 +348,45 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C3ABEA3B24CF7FB900C7FEDB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3ABEA4324CF7FBF00C7FEDB /* Assets.xcassets in Resources */,
+				C3ABEA4124CF7FB900C7FEDB /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3ABEA4724CF7FBF00C7FEDB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3ABEA5A24CF7FC100C7FEDB /* Preview Assets.xcassets in Resources */,
+				C3ABEA5724CF7FC100C7FEDB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5A456A82DE639C2CCAA3BA93 /* [CP] Embed Pods Frameworks */ = {
+		1C6B530294CC0F1EA701484A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-watch-demo Extension/Pods-watch-demo Extension-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-watch-demo Extension/Pods-watch-demo Extension-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-watch-demo Extension/Pods-watch-demo Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2915B0693817D645584F7344 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -193,7 +403,29 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-covid-demo/Pods-covid-demo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7ABF03092CBC834055FE09D0 /* [CP] Check Pods Manifest.lock */ = {
+		75B5D4722B3BB9A8D2D5E3A9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-watch-demo Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF90DDD87A3617ACEC835C9B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -226,11 +458,39 @@
 				C32F1BB124C249D700FCE910 /* AppDelegate.swift in Sources */,
 				C3ABEA3A24CF4CC400C7FEDB /* Geohash.swift in Sources */,
 				C32F1BB324C249D700FCE910 /* SceneDelegate.swift in Sources */,
+				C3A401DC24D0BDD200696F51 /* DemoModel.swift in Sources */,
 				C32F1BB524C249D700FCE910 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C3ABEA4524CF7FBF00C7FEDB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3A401DA24D0BD6200696F51 /* DemoStateManager.swift in Sources */,
+				C3ABEA5124CF7FBF00C7FEDB /* HostingController.swift in Sources */,
+				C3A401DD24D0BDD200696F51 /* DemoModel.swift in Sources */,
+				C3ABEA5524CF7FBF00C7FEDB /* ComplicationController.swift in Sources */,
+				C31DD06224CFA49F00285199 /* Geohash.swift in Sources */,
+				C3ABEA4F24CF7FBF00C7FEDB /* ContentView.swift in Sources */,
+				C3ABEA5324CF7FBF00C7FEDB /* ExtensionDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C3ABEA4C24CF7FBF00C7FEDB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C3ABEA4824CF7FBF00C7FEDB /* watch-demo Extension */;
+			targetProxy = C3ABEA4B24CF7FBF00C7FEDB /* PBXContainerItemProxy */;
+		};
+		C3ABEA5D24CF7FC100C7FEDB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C3ABEA3C24CF7FB900C7FEDB /* watch-demo */;
+			targetProxy = C3ABEA5C24CF7FC100C7FEDB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C32F1BBB24C249DD00FCE910 /* LaunchScreen.storyboard */ = {
@@ -239,6 +499,14 @@
 				C32F1BBC24C249DD00FCE910 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C3ABEA3F24CF7FB900C7FEDB /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C3ABEA4024CF7FB900C7FEDB /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -360,13 +628,17 @@
 		};
 		C32F1BC224C249DD00FCE910 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF294A6CFBF1B9C5C870C591 /* Pods-covid-demo.debug.xcconfig */;
+			baseConfigurationReference = 91BD1557D6960483575D736F /* Pods-covid-demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"covid-demo/Preview Content\"";
 				DEVELOPMENT_TEAM = FG737T967B;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "covid-demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -374,7 +646,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "me.codyhatfield.geo-web.covid-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -382,13 +654,17 @@
 		};
 		C32F1BC324C249DD00FCE910 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F3670E4F69203480F398CF4C /* Pods-covid-demo.release.xcconfig */;
+			baseConfigurationReference = 5CB7125A5D8E6B7658EAF32F /* Pods-covid-demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"covid-demo/Preview Content\"";
 				DEVELOPMENT_TEAM = FG737T967B;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "covid-demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -396,9 +672,109 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "me.codyhatfield.geo-web.covid-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		C3ABEA6024CF7FC100C7FEDB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2056EF122D0112133A6A7C34 /* Pods-watch-demo Extension.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"watch-demo Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = FG737T967B;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
+				INFOPLIST_FILE = "watch-demo Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "me.codyhatfield.geo-web.covid-demo.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+			};
+			name = Debug;
+		};
+		C3ABEA6124CF7FC100C7FEDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43E10743EADA9109B7BB28E5 /* Pods-watch-demo Extension.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"watch-demo Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = FG737T967B;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
+				INFOPLIST_FILE = "watch-demo Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "me.codyhatfield.geo-web.covid-demo.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+			};
+			name = Release;
+		};
+		C3ABEA6424CF7FC100C7FEDB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FG737T967B;
+				IBSC_MODULE = watch_demo_Extension;
+				INFOPLIST_FILE = "watch-demo/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.codyhatfield.geo-web.covid-demo.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+			};
+			name = Debug;
+		};
+		C3ABEA6524CF7FC100C7FEDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FG737T967B;
+				IBSC_MODULE = watch_demo_Extension;
+				INFOPLIST_FILE = "watch-demo/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.codyhatfield.geo-web.covid-demo.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.2;
 			};
 			name = Release;
 		};
@@ -419,6 +795,24 @@
 			buildConfigurations = (
 				C32F1BC224C249DD00FCE910 /* Debug */,
 				C32F1BC324C249DD00FCE910 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3ABEA5F24CF7FC100C7FEDB /* Build configuration list for PBXNativeTarget "watch-demo Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3ABEA6024CF7FC100C7FEDB /* Debug */,
+				C3ABEA6124CF7FC100C7FEDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3ABEA6324CF7FC100C7FEDB /* Build configuration list for PBXNativeTarget "watch-demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3ABEA6424CF7FC100C7FEDB /* Debug */,
+				C3ABEA6524CF7FC100C7FEDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -9,40 +9,61 @@
 import Foundation
 import CoreLocation
 import UserNotifications
-import IpfsLiteApi
+import WatchConnectivity
 
-class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject {
-	static let BLE_DEMO_ID = UUID(uuidString: "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0")!
-	static let DEMO_GEOHASH = Geohash("u4pruydqqvj")!
+class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject, WCSessionDelegate {
+	static let DEMO_GEOHASH = Geohash("c20g0vzc")!
 	
 	let locationManager: CLLocationManager
 	let notificationCenter: UNUserNotificationCenter
+	let wcSession: WCSession?
+	
+	@Published var state: DemoState = .noContent
+	@Published var currentRegion: DemoModel? {
+		didSet {
+			if currentRegion == nil {
+				self.state = .noContent
+				self.wcSession?.transferCurrentComplicationUserInfo([
+					"header": "No location found",
+					"body": ""
+				])
+			} else {
+				self.state = .contentFound
+				self.wcSession?.transferCurrentComplicationUserInfo([
+					"header": currentRegion!.name,
+					"body": currentRegion!.covidPolicy.masksRequired ? "Masks are required" : "Masks are not required"
+				])
+			}
+		}
+	}
 	
 	override init() {
 		locationManager = CLLocationManager()
 		notificationCenter = UNUserNotificationCenter.current()
 		
+		if WCSession.isSupported() {
+			self.wcSession = WCSession.default
+		} else {
+			self.wcSession = nil
+		}
+		
 		super.init()
 		locationManager.delegate = self
+		wcSession?.delegate = self
 		
+		self.wcSession?.activate()
+		
+		print(DemoManager.DEMO_GEOHASH.value)
+
 		self.notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
 			self.locationManager.requestAlwaysAuthorization()
 		}
-		
-		setupIpfsNode()
 	}
 	
-	func registerDemoBeacon() {
-		let beaconRegion = CLBeaconRegion(uuid: DemoManager.BLE_DEMO_ID, identifier: "DemoBeacon")
+	func registerDemoRegion() {
+		let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: 45.5593, longitude: -122.6514), radius: 100, identifier: "DemoRegion")
 		
-		locationManager.startMonitoring(for: beaconRegion)
-	}
-	
-	func setupIpfsNode() {
-		let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-		let repoPath = documents.appendingPathComponent("ipfs-lite")
-		
-		try! IpfsLiteApi.launch(repoPath.path, debug: false, lowMem: true)
+		locationManager.startMonitoring(for: region)
 	}
 	
 	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -57,8 +78,8 @@ class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject {
 		print("AUTHORIZATION STATUS CHANGE: \(status.rawValue)")
 		switch status {
 		case .authorizedAlways:
-			if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
-				registerDemoBeacon()
+			if CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
+				registerDemoRegion()
 			}
 		default:
 			break
@@ -72,18 +93,21 @@ class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject {
 	func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
 		print("Did enter region: \(region)")
 //		self.locationManager.requestLocation()
-
-		IpfsLiteApi.instance().getNodeForCid("QmXEJHJXHio34DV9gzB8tV2JeqnSTvixjXh7SEJnr2Q9MG") { (node, error) in
+		
+		self.state = .searchingForContent
+		
+		URLSession.shared.dataTask(with: URL(string: "https://ipfs.io/ipfs/QmfDvJddbfdrotWXZmGYPWg5Le629L5mjZLeznz4jPqqTm")!) { (data, response, error) in
 			if error != nil {
 				print("ERROR: \(error!.localizedDescription)")
 				return
 			}
 			
-			// API seems to return a raw protobuf block. Fetching a block that is not protobuf causes an error
-			let jsonString = String(data: node!.block.rawData, encoding: .ascii)!.dropFirst(8).dropLast(3)
-			
 			let decoder = JSONDecoder()
-			let demoContent = try! decoder.decode(DemoModel.self, from: jsonString.data(using: .utf8)!)
+			let demoContent = try! decoder.decode(DemoModel.self, from: data!)
+			
+			DispatchQueue.main.async {
+				self.currentRegion = demoContent
+			}
 			
 			let content = UNMutableNotificationContent()
 			content.title = "Welcome to \(demoContent.name)"
@@ -98,11 +122,12 @@ class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject {
 
 			   }
 			}
-		}
+		}.resume()
 	}
 	
 	func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
 		print("Did exit region: \(region)")
+		self.currentRegion = nil
 	}
 	
 //	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -112,24 +137,16 @@ class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject {
 //
 //
 //	}
-}
-
-struct DemoModel: Codable {
-	let name: String
-	let covidPolicy: CovidPolicy
 	
-	enum CodingKeys : String, CodingKey {
-		case name
-		case covidPolicy = "covid-policy"
+	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+		
 	}
-}
-
-struct CovidPolicy: Codable {
-	let summary: String
-	let masksRequired: Bool
 	
-	enum CodingKeys : String, CodingKey {
-		case summary
-		case masksRequired = "masks-required"
+	func sessionDidBecomeInactive(_ session: WCSession) {
+		
+	}
+	
+	func sessionDidDeactivate(_ session: WCSession) {
+		
 	}
 }
