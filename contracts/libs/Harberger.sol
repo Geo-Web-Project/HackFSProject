@@ -14,7 +14,7 @@ contract HarbergerTax {
 
     struct Token {
         address owner;
-        uint96 price;
+        uint256 price;
     }
 
     Token[] public tokens;
@@ -86,10 +86,11 @@ contract HarbergerTax {
     function buy(
         uint256 id,
         uint256 max,
-        uint96 price
+        uint256 price
     )
         public
         payable
+        returns (bool)
     {
         accounts[msg.sender].balance += msg.value;
 
@@ -123,6 +124,8 @@ contract HarbergerTax {
         t.price = price;
 
         emit Change(id, msg.sender, seller);
+
+        return true;
     }
 
     function deposit() public payable {
@@ -144,7 +147,7 @@ contract HarbergerTax {
 
     address public newRecipient;
 
-    function approveRecipient(address _newRecipient) public {
+      function approveRecipient(address _newRecipient) public {
         require(msg.sender == taxRecipient, "must be taxRecipient");
         newRecipient = _newRecipient;
     }
