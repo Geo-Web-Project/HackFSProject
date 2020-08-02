@@ -1,6 +1,6 @@
 pragma solidity ^0.6.6;
 
-import('./contracts/libs/Harberger.sol');
+import('./libs/Harberger.sol');
 
 contract Registry {
     address public admin;
