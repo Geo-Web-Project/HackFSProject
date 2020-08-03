@@ -6,7 +6,7 @@ Draft specifications were created for HackFS. They can be found in the [specs re
 
 ## Components
 
-![https://raw.githubusercontent.com/Geo-Web-Project/HackFSProject/blob/master/Architecture.png]()
+![https://raw.githubusercontent.com/Geo-Web-Project/HackFSProject/master/Architecture.png]()
 
 ### Registry Smart Contract
 
