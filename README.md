@@ -6,6 +6,8 @@ Draft specifications were created for HackFS. They can be found in the [specs re
 
 ## Components
 
+![./Architecture.png]()
+
 ### Registry Smart Contract
 
 The core [Registry contract](./contracts/Registry.sol) is an MVP that allows:
