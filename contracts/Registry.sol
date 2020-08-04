@@ -24,15 +24,14 @@ contract Registry {
     }
 
     mapping(uint256 => LandParcel) landParcels;     // GeoHash -> LandParcel
+    uint256[] public registeredGeoHashes;           // index -> GeoHash
 
 
-    function claim(uint256 _geohash, address _owner, string calldata _cid)  payable external {
-
-
+    function claim(uint256 _geohash, address _owner, string calldata _cid) payable external {
+        
         require(landParcels[_geohash].owner == address(0), "Err: Land already Claimed");
-
-
         landParcels[_geohash] = LandParcel(_owner, _cid);
+        registeredGeoHashes.push(_geohash);
     }
 
     function buy(uint256 _geohash, address _owner, string calldata _cid) payable external returns(bool){
@@ -57,5 +56,9 @@ contract Registry {
         //collectTaxes(msg.sender);
         //approveRecipient(_newOwner);
         landParcels[_geohash].owner = _newOwner;
+    }
+    
+    function getRegisteredGeoHashesCount() external view returns(uint256) {
+        return registeredGeoHashes.length;
     }
 }
