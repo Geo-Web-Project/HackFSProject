@@ -44,6 +44,7 @@ class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject, WCSess
 			}
 		}
 	}
+	@Published var currentImage: UIImage?
 	
 	override init() {
 		locationManager = CLLocationManager()
@@ -71,7 +72,13 @@ class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject, WCSess
 	}
 	
 	func registerDemoRegion() {
-		let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: 45.5593, longitude: -122.6514), radius: 100, identifier: "DemoRegion")
+		let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: 45.5593, longitude: -122.6514), radius: 50, identifier: "DemoRegion")
+		
+		locationManager.startMonitoring(for: region)
+	}
+	
+	func registerDemoRegion2() {
+		let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: 45.5648, longitude: -122.6449), radius: 50, identifier: "DemoRegion2")
 		
 		locationManager.startMonitoring(for: region)
 	}
@@ -90,6 +97,7 @@ class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject, WCSess
 		case .authorizedAlways:
 			if CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
 				registerDemoRegion()
+				registerDemoRegion2()
 			}
 		default:
 			break
@@ -114,6 +122,9 @@ class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject, WCSess
 		guard let location = locations.first else {
 			return
 		}
+		
+		print(location.coordinate.geohash(length: 9))
+		print(Geohash.bigIntValue(geohash: location.coordinate.geohash(length: 9)))
 						
 		self.registry.contentIdentifier(tokenContract: DemoManager.registryAddress, geohash: location.coordinate.geohash(length: 9)) { (error, cid) in
 			if error != nil {
@@ -126,23 +137,33 @@ class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject, WCSess
 			}
 			guard let cid = cid, cid.count > 0 else { return }
 			
-			
-			URLSession.shared.dataTask(with: URL(string: "https://ipfs.io/ipfs/\(cid)")!) { (data, response, error) in
+			URLSession.shared.dataTask(with: URL(string: "https://ipfs.io/ipfs/QmbJKNWY7BxWKqD5d7eiRKTgLHJUPeYoJZodqYSkw2TbV2")!) { (data, response, error) in
 				if error != nil {
 					print("ERROR: \(error!.localizedDescription)")
 					return
 				}
-				
+
 				let decoder = JSONDecoder()
 				let demoContent = try! decoder.decode(DemoModel.self, from: data!)
-				
+
 				DispatchQueue.main.async {
 					self.currentRegion = demoContent
 				}
-				
+
 				let content = UNMutableNotificationContent()
 				content.title = "Welcome to \(demoContent.name)"
 				content.body = demoContent.covidPolicy.summary
+				
+				URLSession.shared.dataTask(with: URL(string: "https://ipfs.io/ipfs/\(demoContent.image["/"]!)")!) { (data, response, error) in
+					if error != nil {
+						print("ERROR: \(error!.localizedDescription)")
+						return
+					}
+					
+					DispatchQueue.main.async {
+						self.currentImage = UIImage(data: data!)
+					}
+				}.resume()
 
 				let uuidString = UUID().uuidString
 				let request = UNNotificationRequest(identifier: uuidString,

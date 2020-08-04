@@ -1,5 +1,6 @@
 {
   "name": "Bamboo Sushi",
+  "image": { "/": "QmQS87QduK1N3u437zYceeELbtruaK6wgWtzYZ9zhE3qsA" },
   "covid-policy": {
     "summary": "Masks are required at all times. Takeout only.",
     "masks-required": true

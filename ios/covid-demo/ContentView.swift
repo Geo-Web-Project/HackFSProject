@@ -29,6 +29,11 @@ struct ContentView: View {
 					.font(.system(size: 20.0))
 				Text(manager.currentRegion!.covidPolicy.summary)
 					.font(.system(size: 16.0))
+				if manager.currentImage != nil {
+					Image(uiImage: manager.currentImage!)
+						.resizable()
+						.frame(width: 200, height: 200, alignment: .center)
+				}
 				Spacer()
 				Text("Masks required: \(String(manager.currentRegion!.covidPolicy.masksRequired))")
 					.font(.system(size: 16.0))

@@ -16,10 +16,12 @@ enum DemoState {
 
 struct DemoModel: Codable {
 	let name: String
+	let image: [String : String]
 	let covidPolicy: CovidPolicy
 	
 	enum CodingKeys : String, CodingKey {
 		case name
+		case image
 		case covidPolicy = "covid-policy"
 	}
 }
