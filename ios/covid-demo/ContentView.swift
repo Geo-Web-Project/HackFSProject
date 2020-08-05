@@ -27,7 +27,7 @@ struct ContentView: View {
 				Spacer()
 				Text("Welcome to \(manager.currentRegion!.name)")
 					.font(.system(size: 20.0))
-				Text(manager.currentRegion!.covidPolicy.summary)
+				Text(manager.currentRegion?.covidPolicy?.summary ?? "")
 					.font(.system(size: 16.0))
 				if manager.currentImage != nil {
 					Image(uiImage: manager.currentImage!)
@@ -35,9 +35,11 @@ struct ContentView: View {
 						.frame(width: 200, height: 200, alignment: .center)
 				}
 				Spacer()
-				Text("Masks required: \(String(manager.currentRegion!.covidPolicy.masksRequired))")
+				if manager.currentRegion?.covidPolicy != nil {
+					Text("Masks required: \(String(manager.currentRegion!.covidPolicy!.masksRequired))")
 					.font(.system(size: 16.0))
 					.fontWeight(.bold)
+				}
 				if manager.cid != nil {
 					Text("CID: \(manager.cid!)")
 						.font(.system(size: 16.0))

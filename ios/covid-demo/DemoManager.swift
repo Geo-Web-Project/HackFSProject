@@ -15,7 +15,7 @@ import Geohash
 
 class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject, WCSessionDelegate {
 	static let INFURA_TOKEN = "44ba7c8772d247b49c57fbc640425f74"
-	static let registryAddress = EthereumAddress("0x46E57Bab9298612E0A49DF4048AE20fC2811C4b8")
+	static let registryAddress = EthereumAddress("0xdb07925F9656132Bb8b2d70581840720376f80bE")
 	static let DEMO_GEOHASH = "c20g0vzfp"
 	
 	let web3Client: EthereumClient
@@ -37,10 +37,18 @@ class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject, WCSess
 				])
 			} else {
 				self.state = .contentFound
-				self.wcSession?.transferCurrentComplicationUserInfo([
-					"header": currentRegion!.name,
-					"body": currentRegion!.covidPolicy.masksRequired ? "Masks are required" : "Masks are not required"
-				])
+				if currentRegion?.covidPolicy != nil {
+					self.wcSession?.transferCurrentComplicationUserInfo([
+						"header": currentRegion!.name,
+						"body": currentRegion!.covidPolicy!.masksRequired ? "Masks are required" : "Masks are not required"
+					])
+				} else {
+					self.wcSession?.transferCurrentComplicationUserInfo([
+						"header": currentRegion!.name,
+						"body": "Unknown COVID-19 policy for location"
+					])
+				}
+				
 			}
 		}
 	}
@@ -122,9 +130,6 @@ class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject, WCSess
 		guard let location = locations.first else {
 			return
 		}
-		
-		print(location.coordinate.geohash(length: 9))
-		print(Geohash.bigIntValue(geohash: location.coordinate.geohash(length: 9)))
 						
 		self.registry.contentIdentifier(tokenContract: DemoManager.registryAddress, geohash: location.coordinate.geohash(length: 9)) { (error, cid) in
 			if error != nil {
@@ -137,7 +142,7 @@ class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject, WCSess
 			}
 			guard let cid = cid, cid.count > 0 else { return }
 			
-			URLSession.shared.dataTask(with: URL(string: "https://ipfs.io/ipfs/QmbJKNWY7BxWKqD5d7eiRKTgLHJUPeYoJZodqYSkw2TbV2")!) { (data, response, error) in
+			URLSession.shared.dataTask(with: URL(string: "https://ipfs.io/ipfs/\(cid)")!) { (data, response, error) in
 				if error != nil {
 					print("ERROR: \(error!.localizedDescription)")
 					return
@@ -152,7 +157,7 @@ class DemoManager: NSObject, CLLocationManagerDelegate, ObservableObject, WCSess
 
 				let content = UNMutableNotificationContent()
 				content.title = "Welcome to \(demoContent.name)"
-				content.body = demoContent.covidPolicy.summary
+				content.body = demoContent.covidPolicy?.summary ?? ""
 				
 				URLSession.shared.dataTask(with: URL(string: "https://ipfs.io/ipfs/\(demoContent.image["/"]!)")!) { (data, response, error) in
 					if error != nil {
