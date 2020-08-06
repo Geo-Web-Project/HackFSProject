@@ -2,11 +2,11 @@
 
 ## Specs
 
-Draft specifications were created for HackFS. They can be found in the [specs repo](https://github.com/Geo-Web-Project/specs)
+Draft specifications were created for HackFS. They can be found in the [specs repo](https://github.com/Geo-Web-Project/specs).
 
 ## Components
 
-![](https://raw.githubusercontent.com/Geo-Web-Project/HackFSProject/master/Architecture.png)
+![](https://raw.githubusercontent.com/Geo-Web-Project/HackFSProject/master/Demo%20Architecture.png)
 
 ### Registry Smart Contract
 
@@ -43,3 +43,7 @@ The interfaces used to present geo-based content include:
 - Presenting iOS notifications in the background
 - A foreground Apple Watch app + UI
 - An Apple Watch complication that updates in the background
+
+## Geo Web Litepaper
+
+A litepaper to explore and define the Geo Web idea was started prior to the HackFS. The first draft was about 80% complete prior to hackathon kick-off. It is available for review [here](https://github.com/Geo-Web-Project/HackFSProject/blob/master/Geo%20Web%20Litepaper_Draft%201.pdf).
